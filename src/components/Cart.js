@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import CartContext from "../store/CartContext";
 import "./Cart.css";
 import {
   Modal,
@@ -11,43 +12,50 @@ import {
   InputGroup,
 } from "react-bootstrap";
 
-const cartElements = [
-  {
-    title: "Colors",
+// const cartElements = [
+//   {
+//     title: "Colors",
 
-    price: 100,
+//     price: 100,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
 
-    quantity: 2,
-  },
+//     quantity: 2,
+//   },
 
-  {
-    title: "Black and white Colors",
+//   {
+//     title: "Black and white Colors",
 
-    price: 50,
+//     price: 50,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
 
-    quantity: 3,
-  },
+//     quantity: 3,
+//   },
 
-  {
-    title: "Yellow and Black Colors",
+//   {
+//     title: "Yellow and Black Colors",
 
-    price: 70,
+//     price: 70,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
 
-    quantity: 1,
-  },
-];
+//     quantity: 1,
+//   },
+// ];
 
 const Cart = (props) => {
+  const cartCtx = useContext(CartContext);
   const handleClose = () => {
     props.onHide();
   };
-  const products = cartElements.map((item) => {
+  let total = 0;
+  let totalForItem = 0;
+  let totalPrice = 0;
+  const products = cartCtx.items.map((item) => {
+    totalForItem = +item.amount;
+    total = total + +item.amount;
+    totalPrice = totalPrice + +item.price * totalForItem;
     return (
       <>
         <Row className="mb-4 mt-4">
@@ -76,7 +84,7 @@ const Cart = (props) => {
             <hr />
             <Form>
               <InputGroup>
-                <Form.Control type="number" />
+                <Form.Control type="number" defaultValue={totalForItem} />
                 <Button variant="danger" className="float-end">
                   Remove
                 </Button>
@@ -114,6 +122,9 @@ const Cart = (props) => {
         <Container>{products}</Container>
       </Modal.Body>
       <Modal.Footer>
+        <Button bg="dark" size="lg" disabled variant="dark">
+          Total Amount : {totalPrice}
+        </Button>
         <Button
           variant="info"
           size="lg"

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Col, Row } from "react-bootstrap";
+import CartContext from "../store/CartContext";
 
 const productsArr = [
   {
+    id: "p1",
     title: "Colors",
 
     price: 100,
@@ -12,6 +14,7 @@ const productsArr = [
   },
 
   {
+    id: "p2",
     title: "Black and white Colors",
 
     price: 50,
@@ -20,6 +23,7 @@ const productsArr = [
   },
 
   {
+    id: "p3",
     title: "Yellow and Black Colors",
 
     price: 70,
@@ -28,6 +32,7 @@ const productsArr = [
   },
 
   {
+    id: "p4",
     title: "Blue Color",
 
     price: 100,
@@ -36,6 +41,12 @@ const productsArr = [
   },
 ];
 const Store = () => {
+  const cartCtx = useContext(CartContext);
+
+  const addItem = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+    // console.log(item);
+  };
   const products = productsArr.map((item) => {
     return (
       <Col>
@@ -65,7 +76,9 @@ const Store = () => {
 
           <Card.Text className="mt-5">
             ${item.price}
-            <Button className="float-end">ADD TO CART</Button>
+            <Button className="float-end" onClick={() => addItem(item)}>
+              ADD TO CART
+            </Button>
           </Card.Text>
 
           {/* <Card.Img src=`${item.imageUrl}"/250px250"` alt="Card image" /> */}

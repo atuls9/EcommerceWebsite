@@ -4,6 +4,7 @@ import "./App.css";
 import Store from "./components/Store";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
+import CartProvider from "./store/CartProvider";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -14,11 +15,11 @@ function App() {
   //   setModalShow(false)
   // }
   return (
-    <div>
+    <CartProvider>
       <Header showModal={showModal} />
       <Cart show={modalShow} onHide={() => setModalShow(false)} />
       <Store />
-    </div>
+    </CartProvider>
   );
 }
 
