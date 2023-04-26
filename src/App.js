@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Store from "./components/Store";
-import Header from "./components/Header";
-import Cart from "./components/Cart";
 import CartProvider from "./store/CartProvider";
+import About from "./components/About";
+import RootLayout from "./components/Root";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { path: "/", element: <Store /> },
+      { path: "/about", element: <About /> },
+    ],
+  },
+]);
 
 function App() {
-  const [modalShow, setModalShow] = useState(false);
-  const showModal = () => {
-    setModalShow(true);
-  };
-  // const CloseModal = () => {
-  //   setModalShow(false)
-  // }
   return (
     <CartProvider>
-      <Header showModal={showModal} />
-      <Cart show={modalShow} onHide={() => setModalShow(false)} />
-      <Store />
+      <RouterProvider router={router} />
     </CartProvider>
   );
 }

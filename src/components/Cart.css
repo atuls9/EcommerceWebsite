@@ -1,3 +1,15 @@
 .custamiseModal .modal-dialog {
   margin-right: 10px !important;
 }
+.setCart {
+  position: fixed;
+  z-index: 2;
+  width: 35%;
+  margin-top: -150px;
+  margin-left: 65%;
+  max-height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+}
