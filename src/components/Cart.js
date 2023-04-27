@@ -12,7 +12,10 @@ import {
 } from "react-bootstrap";
 
 const Cart = (props) => {
+  // const [addProduct, setAddProduct] = useState("1");
+
   const cartCtx = useContext(CartContext);
+
   const handleClose = () => {
     props.onHide();
   };
@@ -21,6 +24,7 @@ const Cart = (props) => {
   let totalPrice = 0;
   const products = cartCtx.items.map((item) => {
     totalForItem = +item.amount;
+    // setAddProduct(totalForItem);
     total = total + +item.amount;
     totalPrice = totalPrice + +item.price * totalForItem;
     return (
@@ -30,7 +34,7 @@ const Cart = (props) => {
             <hr />
             <Image
               src={`${item.imageUrl}`}
-              className="mx-auto "
+              className="mx-auto  "
               style={{
                 height: "80px",
                 width: "80px",
@@ -43,7 +47,7 @@ const Cart = (props) => {
             {item.title}
           </Col>
 
-          <Col sm={2}>
+          <Col sm={2} id="price">
             <hr />
             {item.price}
           </Col>
@@ -51,7 +55,13 @@ const Cart = (props) => {
             <hr />
             <Form>
               <InputGroup>
-                <Form.Control type="number" value={totalForItem} />
+                <Form.Control
+                  id="quantity"
+                  type="number"
+                  // onChange={() => inputHandler(addProduct)}
+                  // defaultValue={item.amount}
+                  value={item.amount}
+                />
                 <Button variant="danger" className="float-end">
                   Remove
                 </Button>
@@ -67,10 +77,10 @@ const Cart = (props) => {
     <Container
       style={{
         backgroundColor: "white",
-        border: "solid 4px red",
+        // border: "solid 2px",
         borderRadius: "16px",
       }}
-      className=" setCart "
+      className=" setCart shadow-lg"
     >
       <Container className="  mt-4">
         <Row className="mb-4 ">

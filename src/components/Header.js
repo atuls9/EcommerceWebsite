@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Navbar,
@@ -11,6 +11,7 @@ import {
   Nav,
 } from "react-bootstrap";
 import CartContext from "../store/CartContext";
+import "./Header.css";
 // import "./Header.css";
 
 const Header = (props) => {
@@ -34,22 +35,22 @@ const Header = (props) => {
         <Container fluid>
           <Col sm={2}>
             {" "}
-            <Navbar.Brand href="#home">React Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#home">Welcome</Navbar.Brand>
           </Col>
-          <Col className="d-flex justify-content-center ">
+          <Col className="d-flex  ">
             <Nav>
-              <Link to="/" className="mx-5 text-white">
+              <NavLink to="/" className=" text-decoration-none">
                 {" "}
                 <h4>Home</h4>{" "}
-              </Link>
-              <Link to="/" className="mx-5 text-white">
+              </NavLink>
+              <NavLink to="/store" className="mx-5  text-decoration-none">
                 {" "}
                 <h4>Store</h4>{" "}
-              </Link>
-              <Link to="about" className="mx-5 text-white">
+              </NavLink>
+              <NavLink to="about" className="  text-decoration-none">
                 {" "}
                 <h4>About </h4>
-              </Link>
+              </NavLink>
             </Nav>
           </Col>
           <Col sm={1}>

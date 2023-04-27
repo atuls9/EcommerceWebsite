@@ -6,13 +6,15 @@ import Store from "./components/Store";
 import CartProvider from "./store/CartProvider";
 import About from "./components/About";
 import RootLayout from "./components/Root";
+import Home from "./components/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
-      { path: "/", element: <Store /> },
+      { path: "/", element: <Home /> },
+      { path: "/store", element: <Store /> },
       { path: "/about", element: <About /> },
     ],
   },
@@ -20,9 +22,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+    <>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </>
   );
 }
 

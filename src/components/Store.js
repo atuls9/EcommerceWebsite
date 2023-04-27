@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import CartContext from "../store/CartContext";
+import "./Store.css";
 
 const productsArr = [
   {
@@ -52,7 +53,7 @@ const Store = () => {
       <Col>
         <Card
           style={{ width: "310px", border: "none" }}
-          className="mx-auto mt-5 "
+          className="mx-auto mt-5 cardSet"
         >
           <Card.Header
             className="mx-auto mb-4"
@@ -64,15 +65,9 @@ const Store = () => {
           >
             <h4>{item.title}</h4>
           </Card.Header>
-
-          <Card.Img
-            src={`${item.imageUrl}`}
-            className="mx-auto "
-            style={{
-              height: "250px",
-              width: "250px",
-            }}
-          />
+          <Card.Body className="cardSet">
+            <Card.Img src={`${item.imageUrl}`} className=" cardImg " />
+          </Card.Body>
 
           <Card.Text className="mt-5">
             ${item.price}

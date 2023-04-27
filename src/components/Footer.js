@@ -6,10 +6,10 @@ const Footer = () => {
   return (
     <Container fluid className="p-5 mt-5 bg-info">
       <Row>
-        <Col className="text-white  bg-info text-center">
+        <Col md={8} className="text-white  bg-info text-center">
           <h1>The Generics</h1>
         </Col>
-        <Col>
+        <Col className="">
           <ButtonGroup aria-label="Basic example">
             <Button style={{ backgroundColor: "transparent", border: "none" }}>
               <img

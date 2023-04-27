@@ -1,0 +1,11 @@
+.cardSet {
+  overflow: hidden;
+}
+
+.cardImg {
+  transition: all 1s;
+}
+
+.cardImg:hover {
+  transform: scale(1.2);
+}
