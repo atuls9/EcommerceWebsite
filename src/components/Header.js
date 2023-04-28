@@ -39,7 +39,7 @@ const Header = (props) => {
           </Col>
           <Col className="d-flex  ">
             <Nav>
-              <NavLink to="/" className=" text-decoration-none">
+              <NavLink to="/home" className=" text-decoration-none">
                 {" "}
                 <h4>Home</h4>{" "}
               </NavLink>
@@ -47,9 +47,13 @@ const Header = (props) => {
                 {" "}
                 <h4>Store</h4>{" "}
               </NavLink>
-              <NavLink to="about" className="  text-decoration-none">
+              <NavLink to="/about" className="  me-5 text-decoration-none">
                 {" "}
                 <h4>About </h4>
+              </NavLink>
+              <NavLink to="/contactus" className="  text-decoration-none">
+                {" "}
+                <h4>Contact us </h4>
               </NavLink>
             </Nav>
           </Col>
