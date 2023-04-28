@@ -9,6 +9,7 @@ import ContactUS from "./components/ContactUS";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import CartProvider from "./store/CartProvider";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -16,7 +17,7 @@ function App() {
     setModalShow(true);
   };
   return (
-    <>
+    <CartProvider>
       <Header showModal={showModal} />
       {!!modalShow && (
         <Cart show={modalShow} onHide={() => setModalShow(false)} />
@@ -36,7 +37,7 @@ function App() {
       </Route>
 
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 

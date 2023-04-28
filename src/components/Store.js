@@ -46,7 +46,7 @@ const Store = () => {
 
   const addItem = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
-    // console.log(item);
+    console.log(cartCtx.addItem);
   };
   const products = productsArr.map((item) => {
     return (

@@ -22,8 +22,10 @@ const Header = (props) => {
   };
   let total = cartCtx.items.reduce(
     (current, item) => (current = current + +item.amount),
+
     0
   );
+  console.log(total);
   return (
     <>
       <Navbar

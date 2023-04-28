@@ -5,6 +5,8 @@ const CartProvider = (props) => {
   const [items, setItems] = useState([]);
 
   const addItemToCartHandler = (item) => {
+    console.log("ítem", item);
+
     let existingItemIndex = items.findIndex((el) => el.id === item.id);
     let existingItem = items[existingItemIndex];
     let updatedItems;
