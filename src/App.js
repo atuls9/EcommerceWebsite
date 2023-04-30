@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Store from "./components/Store";
@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import CartProvider from "./store/CartProvider";
+import SingleProduct from "./components/SingleProduct";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -23,12 +24,21 @@ function App() {
         <Cart show={modalShow} onHide={() => setModalShow(false)} />
       )}
 
+      <Route path="/" exact>
+        <Redirect to="/home" />
+      </Route>
+
       <Route path="/home">
         <Home />
       </Route>
-      <Route path="/store">
+
+      <Route path="/store" exact>
         <Store />
       </Route>
+      <Route path="/store/:id">
+        <SingleProduct />
+      </Route>
+
       <Route path="/about">
         <About />
       </Route>

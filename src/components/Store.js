@@ -3,11 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import CartContext from "../store/CartContext";
 import "./Store.css";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const productsArr = [
   {
     id: "p1",
-    title: "Colors",
+    title: "Headphones",
 
     price: 100,
 
@@ -16,7 +17,7 @@ const productsArr = [
 
   {
     id: "p2",
-    title: "Black and white Colors",
+    title: "iPhone",
 
     price: 50,
 
@@ -25,7 +26,7 @@ const productsArr = [
 
   {
     id: "p3",
-    title: "Yellow and Black Colors",
+    title: "Refrigerator",
 
     price: 70,
 
@@ -34,7 +35,7 @@ const productsArr = [
 
   {
     id: "p4",
-    title: "Blue Color",
+    title: "Horse Painting",
 
     price: 100,
 
@@ -66,7 +67,14 @@ const Store = () => {
             <h4>{item.title}</h4>
           </Card.Header>
           <Card.Body className="cardSet">
-            <Card.Img src={`${item.imageUrl}`} className=" cardImg " />
+            <Link to={`/store/${item.id}`}>
+              <Card.Img
+                src={`images/1${item.id}.png`}
+                className=" cardImg "
+                style={{ height: "250px", width: "250px" }}
+                // onClick={() => imageClicked(item.id)}
+              />
+            </Link>
           </Card.Body>
 
           <Card.Text className="mt-5">

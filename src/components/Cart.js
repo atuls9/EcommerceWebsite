@@ -33,7 +33,7 @@ const Cart = (props) => {
           <Col sm={3}>
             <hr />
             <Image
-              src={`${item.imageUrl}`}
+              src={`images/1${item.id}.png`}
               className="mx-auto  "
               style={{
                 height: "80px",
@@ -42,12 +42,12 @@ const Cart = (props) => {
             />
           </Col>
 
-          <Col sm={2}>
+          <Col sm={3}>
             <hr />
             {item.title}
           </Col>
 
-          <Col sm={2} id="price">
+          <Col sm={1} id="price">
             <hr />
             {item.price}
           </Col>
