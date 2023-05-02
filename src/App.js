@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Store from "./components/Store";
-import About from "./components/About";
-import Home from "./components/Home";
-import ContactUS from "./components/ContactUS";
+import Store from "./pages/Store";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import ContactUS from "./pages/ContactUS";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import CartProvider from "./store/CartProvider";
 import SingleProduct from "./components/SingleProduct";
+// import CartIcon from "./components/CartIcon";
+import RegistrationPage from "./pages/RegistrationPage";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -19,6 +21,8 @@ function App() {
   };
   return (
     <CartProvider>
+      {/* <RegistrationPage /> */}
+      {/* <CartIcon showModal={showModal} /> */}
       <Header showModal={showModal} />
       {!!modalShow && (
         <Cart show={modalShow} onHide={() => setModalShow(false)} />
@@ -44,6 +48,9 @@ function App() {
       </Route>
       <Route path="/contactus">
         <ContactUS />
+      </Route>
+      <Route path="/login">
+        <RegistrationPage />
       </Route>
 
       <Footer />
