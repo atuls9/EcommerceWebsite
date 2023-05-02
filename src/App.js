@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -11,11 +11,14 @@ import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import CartProvider from "./store/CartProvider";
 import SingleProduct from "./components/SingleProduct";
+import AuthContext from "./store/auth-context";
 // import CartIcon from "./components/CartIcon";
 import RegistrationPage from "./pages/RegistrationPage";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
+  const authCtx = useContext(AuthContext);
+  const isLogin = authCtx.isLoggedIn;
   const showModal = () => {
     setModalShow(true);
   };
@@ -37,7 +40,8 @@ function App() {
       </Route>
 
       <Route path="/store" exact>
-        <Store />
+        {isLogin && <Store />}
+        {!isLogin && <Redirect to="/login" />}
       </Route>
       <Route path="/store/:id">
         <SingleProduct />
