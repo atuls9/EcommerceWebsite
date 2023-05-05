@@ -5,9 +5,9 @@
 .setCart {
   position: fixed;
   z-index: 2;
-  width: 35%;
+  width: 40%;
   margin-top: -150px;
-  margin-left: 65%;
+  margin-left: 60%;
   max-height: 500px;
   overflow: auto;
   overflow-x: hidden;

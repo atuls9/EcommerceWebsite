@@ -14,6 +14,7 @@ const RegistrationPage = () => {
     e.preventDefault();
     const enteredEmail = emailRef.current.value;
     const enteredPassword = passwordRef.current.value;
+    const emailRegEx = enteredEmail.replace(/[^a-zA-Z0-9 ]/g, "");
     let url;
 
     if (isLogin) {
@@ -39,7 +40,7 @@ const RegistrationPage = () => {
           return res.json();
         } else {
           return res.json().then((data) => {
-            console.log("data", data);
+            // console.log("data", data);
             let errorMessage = "Authentication Failed";
             if (data && data.error && data.error.message) {
               errorMessage = data.error.message;
@@ -52,7 +53,8 @@ const RegistrationPage = () => {
       .then((data) => {
         authCtx.login(data.idToken);
         history.replace("/store");
-        console.log("success", data.idToken);
+        localStorage.setItem("email", emailRegEx);
+        // console.log("success", data.idToken);
       })
       .catch((error) => {
         alert(error.message);

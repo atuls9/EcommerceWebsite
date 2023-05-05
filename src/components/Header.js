@@ -23,7 +23,7 @@ const Header = (props) => {
     localStorage.removeItem("token");
   };
   const showModal = () => {
-    console.log("showModal");
+    // console.log("showModal");
     props.showModal();
   };
   let total = cartCtx.items.reduce(
@@ -31,7 +31,7 @@ const Header = (props) => {
 
     0
   );
-  console.log(total);
+  // console.log(total);
   return (
     <>
       <Navbar
